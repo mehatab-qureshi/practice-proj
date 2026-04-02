@@ -19,10 +19,10 @@ if (savedTodos) {
 
     del.addEventListener("click", () => {
       li.remove();
-    });
 
-    todos = todos.filter((t) => t !== task);
-    localStorage.setItem("todos", JSON.stringify(todos));
+       todos = todos.filter((t) => t !== task);  //filter() → jo TRUE hoga wo rakhega //t !== task  Jo task ke equal NAHI hai, unhe rakho"
+      localStorage.setItem("todos", JSON.stringify(todos));
+    });
 
     li.appendChild(del);
     list.appendChild(li);
@@ -34,30 +34,38 @@ form.addEventListener("submit", (e) => {
 
   let inputvalue = input.value;
 
+  //validation (Empty check)
   if (input.value === "") {
     console.log("Enter the fields");
     alert("Enter the task");
     return;
   }
 
+  //local storage (arr[] me push todos)
   todos.push(inputvalue);
   localStorage.setItem("todos", JSON.stringify(todos));
 
+  //create li ele n addding data in li
   let li = document.createElement("li");
   li.textContent = inputvalue;
 
+  //del btn create
   let del = document.createElement("button");
   del.innerText = "DEL";
 
+  //event on del
   del.addEventListener("click", () => {
     li.remove();
+
+    todos = todos.filter((t) => t !== inputvalue);
+    localStorage.setItem("todos", JSON.stringify(todos));
   });
 
   li.appendChild(del);
   list.appendChild(li);
 
   input.value = "";
-});
+}); ///till here
 
 // let addbtnn = document.createElement("button");
 // addbtnn.innerText = "Add";
