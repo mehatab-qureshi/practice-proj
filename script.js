@@ -7,8 +7,9 @@ let todos = [];
 //receive data from local storage
 const savedTodos = JSON.parse(localStorage.getItem("todos"));
 
+//if isliye ki Agar localStorage null nhi h toh if chalao warna math this is coz to avaoid error if localstorage is null
 if (savedTodos) {
-  todos = savedTodos;
+  todos = savedTodos; //Page reload ke baad:let todos = [];  // empty hota isliye local.s se saved todos layenge aur [] me upload krnge 
 
   savedTodos.forEach((task) => {
     let li = document.createElement("li");
@@ -65,40 +66,4 @@ form.addEventListener("submit", (e) => {
   list.appendChild(li);
 
   input.value = "";
-}); ///till here
-
-// let addbtnn = document.createElement("button");
-// addbtnn.innerText = "Add";
-// body.append(addbtnn);
-
-// let body = document.querySelector("body");
-// let input = document.querySelector(".text");
-
-// //created n added button
-// let addlist = document.createElement("button");
-// addlist.innerText = "Add";
-// body.appendChild(addlist);
-
-// //creatd n added del btn
-// let dellist = document.createElement("button");
-// dellist.innerHTML = "Del";
-// body.appendChild(dellist);
-
-// let myFunctionAdd = () => {
-//   let li = document.createElement("li");
-//   li.textContent = input.value;
-//   if (input.value === "") {
-//     console.log("Enter the fields");
-//     return;
-//   }
-//   body.appendChild(li);
-//   input.value = "";
-
-// };
-
-// addlist.addEventListener("click", myFunctionAdd);
-
-// dellist.addEventListener("click", () => {
-//   let li = document.querySelector("li:last-child");
-//   li.remove();
-// });
+});
